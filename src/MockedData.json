@@ -1,0 +1,9 @@
+{
+  "0": { "key": "FEATURE_TOGGLE_1", "active": true },
+  "1": { "key": "FEATURE_TOGGLE_2", "active": false },
+  "2": { "key": "FEATURE_TOGGLE_3", "active": true },
+  "3": { "key": "FEATURE_TOGGLE_4", "active": false },
+  "4": { "key": "FEATURE_TOGGLE_5", "active": true },
+  "5": { "key": "FEATURE_TOGGLE_6", "active": false },
+  "6": { "key": "FEATURE_TOGGLE_7", "active": true }
+}
