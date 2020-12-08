@@ -10,6 +10,20 @@
     display: flex;
     align-items: center;
 
+    &__mode {
+      position: relative;
+
+      &__text {
+        margin-left: 1rem;
+        color: #b0bec5;
+        font-size: small;
+        width: 100px;
+        position: absolute;
+        top: 1rem;
+        left: -1.75rem;
+      }
+    }
+
     &__field {
       flex: 1;
       flex-grow: 1;

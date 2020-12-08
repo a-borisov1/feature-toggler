@@ -1,9 +1,49 @@
 {
-  "0": { "key": "FEATURE_TOGGLE_1", "active": true },
-  "1": { "key": "FEATURE_TOGGLE_2", "active": false },
-  "2": { "key": "FEATURE_TOGGLE_3", "active": true },
-  "3": { "key": "FEATURE_TOGGLE_4", "active": false },
-  "4": { "key": "FEATURE_TOGGLE_5", "active": true },
-  "5": { "key": "FEATURE_TOGGLE_6", "active": false },
-  "6": { "key": "FEATURE_TOGGLE_7", "active": true }
+  "0": {
+    "key": "FEATURE_TOGGLE_1",
+    "value": "FEATURE_TOGGLE_1",
+    "active": true,
+    "labels": ["Private", "Test"],
+    "createdAt": 1607417878011
+  },
+  "1": {
+    "key": "FEATURE_TOGGLE_2",
+    "value": "FEATURE_TOGGLE_2",
+    "active": false,
+    "labels": ["Test"],
+    "createdAt": 1607417878771
+  },
+  "2": {
+    "key": "FEATURE_TOGGLE_3",
+    "value": "FEATURE_TOGGLE_3",
+    "active": true,
+    "labels": ["Private"],
+    "createdAt": 1607417878861
+  },
+  "3": {
+    "key": "FEATURE_TOGGLE_4",
+    "value": "FEATURE_TOGGLE_4",
+    "active": false,
+    "createdAt": 1607417824781
+  },
+  "4": {
+    "key": "FEATURE_TOGGLE_5",
+    "value": "FEATURE_TOGGLE_5",
+    "active": true,
+    "labels": ["Private", "Test"],
+    "createdAt": 160741784378
+  },
+  "5": {
+    "key": "FEATURE_TOGGLE_6",
+    "value": "FEATURE_TOGGLE_6",
+    "active": false,
+    "labels": ["Private", "Test", "Corrected"],
+    "createdAt": 1607419801878
+  },
+  "6": {
+    "key": "FEATURE_TOGGLE_7",
+    "value": "FEATURE_TOGGLE_1",
+    "active": true,
+    "createdAt": 16074178782
+  }
 }

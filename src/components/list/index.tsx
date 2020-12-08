@@ -2,12 +2,9 @@ import React from 'react';
 
 import { Item } from '../item';
 
-import './style.scss';
+import { IListItem } from '../main';
 
-type IListItem = {
-  key: string;
-  active: boolean;
-};
+import './style.scss';
 
 interface IList {
   featuresList: IListItem[];
@@ -26,9 +23,14 @@ export const List: React.FC<IList> = ({ featuresList, setFeaturesList }) => {
         return (
           <Item
             key={elem.key}
+            _key={elem.key}
             activeByDefault={elem.active}
-            value={elem.key}
+            value={elem.value}
             onDelete={handleDelete}
+            labels={elem?.labels}
+            createdAt={elem?.createdAt}
+            featuresList={featuresList}
+            setFeaturesList={setFeaturesList}
           />
         );
       })}
