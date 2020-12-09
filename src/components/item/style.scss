@@ -15,6 +15,7 @@
   }
 
   &__text {
+    text-overflow: ellipsis;
     font-family: Roboto, Helvetica, Arial, sans-serif;
     font-size: 16px;
     font-weight: 400;
@@ -58,4 +59,8 @@
   box-shadow: 0 2px 12px 0 rgba(10, 230, 182, 0.54),
     0 3px 11px -12px rgba(230, 36, 10, 0.54),
     0 1px 5px 0 rgba(76, 10, 230, 0.54);
+}
+
+.MuiInputBase-input.MuiInput-input {
+  text-overflow: ellipsis;
 }

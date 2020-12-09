@@ -42,11 +42,9 @@ describe('Item component', () => {
     expect(wrapper.find(DeleteForeverIcon).prop('color')).toEqual('disabled');
   });
 
-  it('should erase field on cleaAll click', () => {
+  it('should get value as prop', () => {
     const wrapper = shallow(<Item {...props} />);
     expect(wrapper.find(TextField).prop('value')).toEqual('test');
-    wrapper.find('.item__controls__button_edit').simulate('click');
-    expect(wrapper.find(TextField).prop('value')).toEqual('');
   });
 
   it('should  delete  Item  on delete button click', () => {

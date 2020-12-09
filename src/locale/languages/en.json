@@ -2,5 +2,9 @@
   "this feature already exists": "this feature already exists",
   "input here": "input here",
   "feature toggler": "feature toggler",
-  "Created at": "Created at "
+  "Created at": "Created at ",
+  "Search": "Search",
+  "Set this feature inactive first!": "Set this feature inactive first!",
+  "Successfully deleted!": "Successfully deleted!",
+  "Successfully added!": "Successfully added!"
 }

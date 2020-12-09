@@ -31,7 +31,7 @@
     "value": "FEATURE_TOGGLE_5",
     "active": true,
     "labels": ["Private", "Test"],
-    "createdAt": 160741784378
+    "createdAt": 1607417843785
   },
   "5": {
     "key": "FEATURE_TOGGLE_6",
@@ -42,8 +42,8 @@
   },
   "6": {
     "key": "FEATURE_TOGGLE_7",
-    "value": "FEATURE_TOGGLE_1",
+    "value": "FEATURE_TOGGLE_7",
     "active": true,
-    "createdAt": 16074178782
+    "createdAt": 1607417870782
   }
 }

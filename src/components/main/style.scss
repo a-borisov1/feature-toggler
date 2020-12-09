@@ -6,10 +6,11 @@
   align-items: center;
 
   &__input {
-    width: 50%;
     display: flex;
     align-items: center;
-
+    position: relative;
+    padding-left: 1rem;
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
     &__mode {
       position: relative;
 
@@ -25,8 +26,13 @@
     }
 
     &__field {
-      flex: 1;
-      flex-grow: 1;
+      &__clear-button {
+        position: absolute !important;
+        right: 2rem;
+      }
+      &__add-button {
+        margin-left: 2rem !important;
+      }
     }
 
     &__add_item {

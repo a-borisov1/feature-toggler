@@ -4,9 +4,12 @@ import { v4 as uuidv4 } from 'uuid';
 
 import TextField from '@material-ui/core/TextField';
 import Fab from '@material-ui/core/Fab';
-import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
+import Snackbar from '@material-ui/core/Snackbar';
 import AddIcon from '@material-ui/icons/Add';
+import InputBase from '@material-ui/core/InputBase';
+import IconButton from '@material-ui/core/IconButton';
+import Clear from '@material-ui/icons/Clear';
 
 import { List } from '../list';
 
@@ -28,14 +31,16 @@ export const Main = () => {
   const initData = Object.values(mockedData).slice();
 
   const [newFeatureValue, setNewFeatureValue] = useState<string>('');
-  const [searchMode, setSearchMode] = useState<boolean>(false);
   const [featuresList, setFeaturesList] = useState<IListItem[]>(initData);
-  const [featuresListWithFilter, setFeaturesListWithFilter] = useState<
-    IListItem[]
-  >(featuresList);
+  const [open, setOpen] = useState<boolean>(false);
 
-  const errorCondition =
-    !!featuresList.find((elem) => elem.key === newFeatureValue) && !searchMode;
+  const errorCondition = !!featuresList.find(
+    (elem) => elem.value === newFeatureValue
+  );
+
+  const Alert = (props: AlertProps) => {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+  };
 
   const handleAdd = () => {
     const newArray = [
@@ -43,14 +48,14 @@ export const Main = () => {
       {
         key: uuidv4(),
         value: newFeatureValue,
-        active: true,
+        active: false,
         labels: ['New'],
-        createdAt: moment().unix(),
+        createdAt: moment().valueOf(),
       },
     ];
     setFeaturesList(newArray);
-    setFeaturesListWithFilter(newArray);
     setNewFeatureValue('');
+    setOpen(true);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLDivElement>) => {
@@ -60,60 +65,53 @@ export const Main = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewFeatureValue(e.currentTarget.value.replace('  ', ' '));
-    if (searchMode) {
-      setFeaturesListWithFilter(
-        featuresList.filter((elem) =>
-          elem.value.includes(e.currentTarget.value)
-        )
-      );
+  };
+
+  const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
     }
+    setOpen(false);
   };
 
   return (
     <div className="main">
       <div className="main__input">
-        <TextField
-          id="standard-basic"
-          label={
-            errorCondition
-              ? translations['this feature already exists']
-              : translations['input here']
-          }
+        <InputBase
           className="main__input__field"
+          placeholder={translations['input here']}
           value={newFeatureValue}
-          error={errorCondition}
           onChange={handleChange}
           onKeyPress={(e) => handleKeyPress(e)}
         />
-        {!searchMode && (
-          <Fab
-            size="small"
-            color="secondary"
-            aria-label="add"
-            className="main__input__add_item"
-            onClick={handleAdd}
-            disabled={newFeatureValue.length < 1 || errorCondition}
+        {newFeatureValue.length > 0 && (
+          <IconButton
+            className="main__input__field__clear-button"
+            onClick={() => setNewFeatureValue('')}
           >
-            <AddIcon />
-          </Fab>
+            <Clear />
+          </IconButton>
         )}
-        <FormControlLabel
-          className="main__input__mode"
-          value={searchMode}
-          control={<Switch color="primary" />}
-          label={
-            <p className="main__input__mode__text">
-              {searchMode ? 'Search Mode' : 'Addition Mode'}
-            </p>
-          }
-          labelPlacement="bottom"
-          onChange={() => setSearchMode(!searchMode)}
-        />
+        <IconButton
+          className="main__input__field__add-button"
+          color="secondary"
+          onClick={handleAdd}
+          disabled={newFeatureValue.length < 1 || errorCondition}
+        >
+          <AddIcon />
+        </IconButton>
       </div>
-      <List
-        featuresList={searchMode ? featuresListWithFilter : featuresList}
-        setFeaturesList={setFeaturesList}
-      />
+      <List featuresList={featuresList} setFeaturesList={setFeaturesList} />
+      <Snackbar
+        open={open}
+        autoHideDuration={2600}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      >
+        <Alert onClose={handleClose} severity={'success'}>
+          {translations['Successfully added!']}
+        </Alert>
+      </Snackbar>
     </div>
   );
 };
